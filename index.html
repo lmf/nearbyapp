@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=HERRLhQbQAbGB4RYFCkqdclg"></script>
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/echo.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/af.ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/icons.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/flat.icon.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script charset="utf-8" src="js/MarkerTool_min.js"></script>
+        
+        <script type="text/javascript">  
+           $.ui.ready(function(){ 
+              $("#afui").get(0).className='ios7'; 
+              
+           });
+           $(document).ready(function(){
+              
+           });        
+        </script>
+        <title>Hello World</title>
+    </head>
+    <body>
+      
+       <div id="afui">
+          <!--顶部栏  -->
+          <div id="header"> 
+                  <a id="backButton">Back...</a>
+                  <h1>Custom Header</h1>
+                  <a class="button icon fui-list"></a>
+                  <a class="button icon fui-plus" style="float:right" onclick="getMkrTool()" title="新动态"></a>
+                  <div style="position:absolute;top:46px;right:10px;width:80px;height:90px;z-index:100;background:#ccc"></div>
+          </div>
+          <!-- 内容区域 -->
+          <div id="content">
+            <div id="main" class="panel" data-load="showCount" data-counter='5'>
+                <div id="map"></div>
+                <span class="map-tip">在地图上长按创建动态</span>
+            </div>
+
+            <!-- 注册登录区域 -->
+            <div class="panel" id="index" data-header="none" data-footer="none" data-load="initLogin" style="background-color:rgb(36,169,225);overflow:hidden">
+                <div class="grid index">
+                    <a class="button" style="color:#fff;display:block;" href="#register">使用电子邮件注册</a>
+                    <a class="button" style="color:#fff;display:block;" href="#login">登录</a>
+                </div>
+                <script type="text/javascript">
+                    function initLogin(){
+                      
+                       $('div.index').css({'margin-top':window.innerHeight-$('div.index').height()-30+'px'/*,'position':'absolute'*/});
+                    }
+                </script>
+            </div>
+            <div class="panel" id="register" modal="true">
+                <header>
+                      <h1>注册</h1>
+                      <a class="button icon close" onclick="$.ui.hideModal()"></a>
+                      <a href="#" class="button icon check" style="float:right" tabindex="3"></a>
+                </header>
+                <form  class="form-item">
+                    <div class="input-box">
+                        <label for="account" style="width:6%;">
+                          <a class="icon user"></a>
+                        </label>
+                        <input type="text" placeholder="用户名或电子邮件" id="account" class="input-item" tabindex="1">
+                    </div>
+                    <div class="input-box">
+                        <label for="password" style="width:6%;">
+                            <a class="icon fui-lock"></a>
+                        </label>
+                        <input type="password" class="input-item" placeholder="密码" id="password" tabindex="2">
+                    </div>
+
+                </form>  
+            </div>
+            <div class="panel" id="login" modal="true">
+                <header>
+                    <h1>登录</h1>
+                    <a class="button icon close" onclick="$.ui.hideModal()"></a>
+                    <a href="#" class="button icon check" style="float:right" tabindex="3"></a>
+                </header>
+                <form class="form-item">
+                    <div class="input-box">
+                        <label for="account">
+                          <a class="icon user"></a>
+                        </label>
+                        <input type="text" placeholder="用户名或电子邮件" id="account" class="input-item" tabindex="1">
+                    </div>
+                    <div class="input-box">
+                        <label for="password">
+                            <a class="icon fui-lock"></a>
+                        </label>
+                        <input type="password" placeholder="密码" id="password" class="input-item" tabindex="2">
+                    </div>
+                    
+                </form>
+                <script type="text/javascript" src="js/user/login.js"></script>
+                <script type="text/javascript">
+                    
+                    $('#login input').bind('focus' , function(){
+                        
+                        $('div.input-box').css('border-color','#ccc');
+                        
+                        $(this).parent().css('border-color','rgba(82,155,234,255)');
+                    });
+                    
+                    
+                </script>
+            </div>
+            <div class="panel" id="about" data-tab="#about" modal="true" >
+                hh
+            </div>
+        </div>
+        <div id="navbar">
+              <a class="icon location" href="#home">世界</a>
+              <a class="icon star" href="#settings">浏览</a>
+              <a class="icon message" href="#about">消息</a>
+              <a class="icon user" href='#index' data-transition="pop" data-persist-ajax="true" data-refresh-ajax="true">个人中心</a> 
+        </div>
+      </div>
+      <script data-main="js/main" src="js/lib/require.js"></script>
+      
+      <script type="text/javascript">
+            var map = new BMap.Map("map");          // 创建地图实例 
+            $('#map').css('position','absolute');
+
+            var point = new BMap.Point(116.404, 39.915);  // 创建点坐标  
+            map.centerAndZoom(point, 15);
+            var scale = new BMap.ScaleControl();
+            var navi = new BMap.NavigationControl();
+            //var geo = new BMap.GeolocationControl();
+            map.addControl(scale);
+            map.addControl(navi);
+            //map.addControl(geo);
+           /* var myIcon = new BMap.Icon("./img/location_24.png", new BMap.Size(24, 24),{
+               offset : new BMap.Size(20,10),
+               imageOffset : new BMap.Size(0,0)
+            });*/
+            //var traffic = new BMap.TrafficLayer();        // 创建交通流量图层实例
+            //map.addTileLayer(traffic);
+            var marker = new BMap.Marker(point , {icon: BMapLib.MarkerTool.SYS_ICONS[6]});
+            //var marker = new BMap.Marker(point);
+            map.addOverlay(marker);
+            var opts = {  
+             width: 250,     // 信息窗口宽度  
+             height: 100,     // 信息窗口高度  
+             title: "Hello"  // 信息窗口标题 
+            }  
+            var infoWindow = new BMap.InfoWindow("World", opts);  // 创建信息窗口对象 
+            marker.addEventListener("click", function(){  
+                map.openInfoWindow(infoWindow, point);      // 打开信息窗口  
+            });  
+
+           /* var myPushpin = new BMap.PushpinTool(map);         // 创建标注工具实例    
+            myPushpin.addEventListener("markend", function(e){  // 监听事件，提示标注点坐标信息   
+                alert("您标注的位置：" +     
+                   e.marker.getPoint().lng + ", " +     
+                   e.marker.getPoint().lat);    
+            });    
+            myPushpin.open();  */                                // 开启标注工具
+            $('div.anchorBL').remove();
+            var html = ['<p>hello</p>' , '<p>world</p>'];
+            var infoWin = new BMap.InfoWindow(html.join(""), {offset: new BMap.Size(0, -10)});
+            var curMkr = null; // 记录当前添加的Mkr
+            var mkrTool = new BMapLib.MarkerTool(map, {followText: "",autoClose: true});
+            mkrTool.addEventListener("markend", function(evt){ 
+                var mkr = evt.marker;
+                mkr.openInfoWindow(infoWin);
+                curMkr = mkr;
+            });
+            
+         function getMkrTool(){
+              //$('a.add').css('color','#ccc');
+              mkrTool.open();
+              mkrTool.setIcon(BMapLib.MarkerTool.SYS_ICONS[6]);
+
+         }
+         
+      </script>
+    </body>
+</html>
