@@ -1,4 +1,4 @@
-$('#login').find('a.check').on('tap', function(){
+/*$('#login').find('a.check').on('tap', function(){
 	var username = $('#account').val();
 	var pwd = $('#password').val();
 	$.ajax({
@@ -23,4 +23,4 @@ $('#login').find('a.check').on('tap', function(){
 		}
 
 	});
-});
+});*/
