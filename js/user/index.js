@@ -1,8 +1,6 @@
 //用户中心首页
 'use strict';
 
-$('div.index').css({'margin-top':window.innerHeight-$('div.index').height()-30+'px'/*,'position':'absolute'*/});
-
 $('#login input').bind('focus' , function(e){
                         
     $('div.input-box').css('border-color','#ccc');
@@ -12,6 +10,6 @@ $('#login input').bind('focus' , function(e){
 
 $('#login .check').on('tap', function(e){
 	$.ajax({
-		
+
 	})
 });

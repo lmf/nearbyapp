@@ -68,6 +68,7 @@ you can use the generic selector below, but it's slower:
   content: "\e02c";
 }
 .icon.fui-arrow-left:before {
+  font-family: 'Flat-UI-Icons';
   content: "\e02d";
 }
 .icon.fui-cmd:before {
