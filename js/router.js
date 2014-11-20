@@ -12,6 +12,7 @@ define([
 	var options = {
 		routes : {
 			'': 'indexAction',
+			'main': 'indexAction',
 			'(:action)(/*param)': 'doAction',
 			
 		},

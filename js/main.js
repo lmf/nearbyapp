@@ -8,7 +8,7 @@ require.config({
 		underscore: 'js/lib/underscore/underscore',
 		backbone: 'js/lib/backbone/backbone',
 		appframework: 'js/lib/jq.appframework',
-		appframeworkui: 'js/lib/appframework.ui.min',
+		appframeworkui: 'js/lib/appframework.ui',
 		slidemenu: 'js/plugins/af.slidemenu'
 	},
 

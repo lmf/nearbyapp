@@ -1,105 +1,127 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />       
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/echo.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/af.ui.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/icons.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/flat.icon.css" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />       
-        <title>Hello World</title>
-    </head>
-    <body>
-      
-       <div id="afui">
-          <!--顶部栏  -->
-          <div id="header"> 
-                  <a id="backButton">Back...</a>
-                  <h1>Custom Header</h1>
-                  <a class="button icon fui-list"></a>
-                  <a class="button icon fui-plus" style="float:right" onclick="getMkrTool()" title="新动态"></a>
-                  <div style="position:absolute;top:46px;right:10px;width:80px;height:90px;z-index:100;background:#ccc"></div>
-          </div>
-          <!-- 内容区域 -->
-          <div id="content">
-            <div id="main" class="panel" data-load="showCount" data-counter='5'>
-                <div id="map"></div>
-                <span class="map-tip">在地图上长按创建动态</span>
-            </div>
+		<head>
+				<meta charset="utf-8" />
+				<meta name="format-detection" content="telephone=no" />
+				<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+				<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />       
+				<script type="text/javascript" src="js/index.js"></script>
+				<script type="text/javascript" src="js/echo.js"></script>
+				<link rel="stylesheet" type="text/css" href="css/af.ui.min.css" />
+				<link rel="stylesheet" type="text/css" href="css/icons.min.css" />
+				<link rel="stylesheet" type="text/css" href="css/flat.icon.css" />
+				<link rel="stylesheet" type="text/css" href="css/index.css" />       
+				<title>Hello World</title>
+		</head>
+		<body>
+			
+			 <div id="afui">
+					<!--顶部栏  -->
+					<!-- <div id="header"> 
+							<a class="button icon fui-list"></a>
+							<a class="button icon fui-plus" style="float:right" onclick="getMkrTool()" title="新动态"></a>
+						 
+					</div> -->
+					<!-- 内容区域 -->
+					<div id="content">
+						<div id="main" class="panel" data-header="none" data-load="showCount" data-counter='5'>
+								<div id="map"></div>
+								<span class="map-tip">在地图上长按创建动态</span>
+						</div>
 
-            <!-- 注册登录区域 -->
-            <div class="panel" id="user" data-footer="none" style="background-color:rgb(36,169,225);overflow:hidden">
-                <header>                    
-                    <a class="button icon fui-arrow-left" onclick="$.ui.hideModal()"></a>                    
-                </header>
-                <div class="grid index">
-                    <a class="button" style="color:#fff;display:block;" href="#register">使用电子邮件注册</a>
-                    <a class="button" style="color:#fff;display:block;" href="#login">登录</a>
-                </div>
-                
-            </div>
-            <div class="panel" id="register" modal="true">
-                <header>
-                      <h1>注册</h1>
-                      <a class="button icon close" onclick="$.ui.hideModal()"></a>
-                      <a href="#" class="button icon check" style="float:right" tabindex="3"></a>
-                </header>
-                <form  class="form-item">
-                    <div class="input-box">
-                        <label for="account" style="width:6%;">
-                          <a class="icon user"></a>
-                        </label>
-                        <input type="text" placeholder="用户名或电子邮件" id="account" class="input-item" tabindex="1">
-                    </div>
-                    <div class="input-box">
-                        <label for="password" style="width:6%;">
-                            <a class="icon fui-lock"></a>
-                        </label>
-                        <input type="password" class="input-item" placeholder="密码" id="password" tabindex="2">
-                    </div>
+						<!-- 注册登录区域 -->
+						<div class="panel" id="user" data-footer="none" style="overflow:hidden">
+								<header>                    
+										<a class="button icon fui-arrow-left" onclick="javascript:history.back()"></a>                    
+								</header>
+								<div class="grid index">
+										<a class="button" style="background-color:#fff; display:block;" href="#register">使用电子邮件注册</a>
+										<a class="button" style="background-color:#fff; display:block;" href="#login">登录</a>
+								</div>
+								
+						</div>
+						<div class="panel" id="register" modal="true">
+								<header>
+											<h1>注册</h1>
+											<a class="button icon close" onclick="$.ui.hideModal()"></a>
+											<a href="#" class="button icon check" style="float:right" tabindex="3"></a>
+								</header>
+								<form  class="form-item register-form">
+										<div class="input-box">
+												<label for="reg_mail" style="width:6%;">
+													<a class="icon fui-mail"></a>
+												</label>
+												<input type="text" placeholder="电子邮件" id="reg_mail" class="input-item" tabindex="1">
+										</div>
+										<div class="input-box">
+												<label for="reg_account" style="width:6%;">
+													<a class="icon user"></a>
+												</label>
+												<input type="text" placeholder="用户名" id="reg_account" class="input-item" tabindex="2">
+										</div>
+										<div class="input-box">
+												<label for="reg_password" style="width:6%;">
+														<a class="icon fui-lock"></a>
+												</label>
+												<input type="password" class="input-item" placeholder="密码" id="reg_password" tabindex="3">
+										</div>
 
-                </form>  
-            </div>
-            <div class="panel" id="login" modal="true">
-                <header>
-                    <h1>登录</h1>
-                    <a class="button icon close" onclick="$.ui.hideModal()"></a>
-                    <a href="javascript:;" class="button icon check" style="float:right" tabindex="3"></a>
-                </header>
-                <form class="form-item">
-                    <div class="input-box">
-                        <label for="account">
-                          <a class="icon user"></a>
-                        </label>
-                        <input type="text" placeholder="用户名或电子邮件" id="account" class="input-item" tabindex="1">
-                    </div>
-                    <div class="input-box">
-                        <label for="password">
-                            <a class="icon fui-lock"></a>
-                        </label>
-                        <input type="password" placeholder="密码" id="password" class="input-item" tabindex="2">
-                    </div>
-                    
-                </form>
-                
-            </div>
-            <div class="panel" id="about" data-tab="#about" modal="true" >
-                hh
-            </div>
-        </div>
+								</form>  
+								<div class="person-info">
+										<h2 class="info-header" style="margin-bottom: -10px;">个人资料</h2>
+										<form class="form-item register-form">
+												<div class="input-box">
+														<label for="real-name">
+															<a class="icon tag"></a>
+														</label>
+														<input type="text" placeholder="姓名" id="register-name" class="input-item" tabindex="4">
+												</div>
+												<div class="input-box">
+														<label for="phone-number">
+															<a class="icon phone"></a>
+														</label>
+														<input type="number" placeholder="手机号" id="register-phone" class="input-item" tabindex="5">
+												</div>
+										</form>
+								</div>
+						</div>
+						<div class="panel" id="login" modal="true">
+								<header>
+										<h1>登录</h1>
+										<a class="button icon close" onclick="$.ui.hideModal()"></a>
+										<a href="javascript:;" class="button icon check login" style="float:right" tabindex="3"></a>
+								</header>
+								<form class="form-item">
+										<div class="input-box">
+												<label for="account">
+													<a class="icon user"></a>
+												</label>
+												<input type="text" placeholder="用户名或电子邮件" id="login_account" class="input-item" tabindex="1">
+										</div>
+										<div class="input-box">
+												<label for="password">
+														<a class="icon fui-lock"></a>
+												</label>
+												<input type="password" placeholder="密码" id="login_password" class="input-item" tabindex="2">
+										</div>
+										
+								</form>
+								<p class="findpwd">找回密码</p>
+								
+						</div>
+						<div class="panel" id="about" data-tab="#about" modal="true" >
+								hh
+						</div>
+				</div>
 
-        <div id="navbar">
-              <a class="icon location" href="#home">世界</a>
-              <a class="icon star" href="#settings">浏览</a>
-              <a class="icon message" href="#about">消息</a>
-              <a class="icon user" href='#user' data-transition="pop" data-persist-ajax="true" data-refresh-ajax="true">个人中心</a> 
-        </div>
-      </div>
-      <script data-main="js/main" src="js/lib/requirejs/require.js"></script>      
-      
-    </body>
+				<div id="navbar">
+							<a class="icon location" href="#home">世界</a>
+							<a class="icon fui-eye" href="#settings">浏览</a>
+							<a class="icon message" href="#about"   data-transition="pop" data-persist-ajax="true" data-refresh-ajax="true">消息</a>
+							<a class="icon user" href='#user'>个人中心</a> 
+				</div>
+			</div>
+			<script data-main="js/main" src="js/lib/requirejs/require.js"></script>      
+			
+		</body>
 </html>

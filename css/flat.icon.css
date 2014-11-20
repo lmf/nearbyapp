@@ -113,6 +113,7 @@ you can use the generic selector below, but it's slower:
   content: "\e011";
 }
 .icon.fui-eye:before {
+  font-family: 'Flat-UI-Icons';
   content: "\e012";
 }
 .icon.fui-chat:before {
@@ -125,6 +126,7 @@ you can use the generic selector below, but it's slower:
   content: "\e01d";
 }
 .icon.fui-mail:before {
+  font-family: 'Flat-UI-Icons';
   content: "\e01e";
 }
 .fui-lock:before {
